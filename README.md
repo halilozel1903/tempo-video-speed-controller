@@ -2,6 +2,8 @@
 
 **Your playback speed, remembered.** A lightweight Microsoft Edge extension that reapplies your preferred speed whenever a video starts, resumes, or changes.
 
+[![JitPack](https://jitpack.io/v/halilozel1903/tempo-video-speed-controller.svg)](https://jitpack.io/#halilozel1903/tempo-video-speed-controller)
+
 [Türkçe](README.tr.md) · [Installation](#installation) · [Contributing](CONTRIBUTING.md) · [MIT License](LICENSE)
 
 <p align="center">
@@ -24,7 +26,7 @@ Tempo runs locally, requires no account, and has no runtime dependencies. The cu
 
 Tempo is installed locally as an unpacked extension. It is not currently distributed through Microsoft Edge Add-ons.
 
-1. [Download the source ZIP](https://github.com/halilozel1903/tempo-video-speed-controller/archive/refs/heads/main.zip), or clone this repository:
+1. [Download the extension ZIP from the latest release](https://github.com/halilozel1903/tempo-video-speed-controller/releases/latest), or clone this repository:
 
    ```sh
    git clone https://github.com/halilozel1903/tempo-video-speed-controller.git
@@ -33,7 +35,7 @@ Tempo is installed locally as an unpacked extension. It is not currently distrib
 2. Extract the ZIP to a permanent folder if you downloaded it.
 3. Open `edge://extensions` in Microsoft Edge.
 4. Enable **Developer mode**, then select **Load unpacked**.
-5. Select the repository folder containing `manifest.json`.
+5. For the release ZIP, select the extracted `tempo` folder containing `manifest.json`. For a clone, select the repository folder.
 6. Refresh any video tabs that were already open. Pin **Tempo** from the extensions menu for quick access.
 
 No Node.js installation or build step is required to use the extension. Keep the loaded folder in place; moving or deleting it will prevent Edge from loading the extension.
@@ -98,7 +100,7 @@ npm test
 npm run package
 ```
 
-The test suite includes **12 Edge integration tests** and **4 startup regression tests**. It covers repeated playback, website speed resets, media source changes, dynamic videos, cross-origin frames, open shadow roots, disabling and restoring controls, keyboard shortcuts, rapid settings changes, and persistence across browser restarts.
+The test suite includes **12 Edge integration tests**, **4 startup regression tests**, and a **distribution test**. It covers repeated playback, website speed resets, media source changes, dynamic videos, cross-origin frames, open shadow roots, disabling and restoring controls, keyboard shortcuts, rapid settings changes, persistence across browser restarts, package contents, and reproducible archives.
 
 Tests create a separate temporary Edge profile and remove it afterward. They do not use your personal browser profile. The small generated WebM fixture is included in the repository, so FFmpeg is not needed to run the tests.
 
@@ -107,9 +109,24 @@ Packaging produces:
 | Output | Purpose |
 | --- | --- |
 | `dist/tempo/` | A clean directory ready for **Load unpacked**. |
-| `dist/tempo-edge-1.0.0.zip` | A distributable archive containing the extension, documentation, and license. |
+| `dist/tempo-edge-1.0.1.zip` | A distributable archive containing the extension, documentation, and license. |
+| `dist/tempo-edge-1.0.1.zip.sha256` | SHA-256 checksum for verifying the archive. |
 
 To regenerate the extension icons without third-party libraries, run `python3 scripts/icons.py`.
+
+### JitPack distribution
+
+[Open the project on JitPack](https://jitpack.io/#halilozel1903/tempo-video-speed-controller).
+
+JitPack runs the custom build in `jitpack.yml` to package the extension and publish it as a **ZIP artifact**. This is an optional download channel; the extension is installed using **Load unpacked** in Edge. The build uses Python and Maven and does not require Node.js or the browser test dependencies.
+
+Artifacts use the coordinates `com.github.halilozel1903:tempo-video-speed-controller:<tag>` with type `zip`. For example, the v1.0.1 artifact URL is:
+
+```text
+https://jitpack.io/com/github/halilozel1903/tempo-video-speed-controller/v1.0.1/tempo-video-speed-controller-v1.0.1.zip
+```
+
+The status badge links to JitPack's build history. Build logs and availability are managed by JitPack; the [GitHub release](https://github.com/halilozel1903/tempo-video-speed-controller/releases/latest) provides a separate download.
 
 ### Project structure
 

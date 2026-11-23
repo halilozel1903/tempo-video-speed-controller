@@ -2,6 +2,8 @@
 
 **Seçtiğiniz video hızı, her oynatmada hatırlanır.** Tempo, video başladığında, devam ettiğinde veya değiştiğinde tercih ettiğiniz hızı yeniden uygulayan hafif bir Microsoft Edge extension'ıdır.
 
+[![JitPack](https://jitpack.io/v/halilozel1903/tempo-video-speed-controller.svg)](https://jitpack.io/#halilozel1903/tempo-video-speed-controller)
+
 [English](README.md) · [Katkı rehberi](CONTRIBUTING.md) · [MIT lisansı](LICENSE)
 
 <p align="center">
@@ -24,7 +26,7 @@ Tempo yerel olarak çalışır; hesap oluşturmayı gerektirmez ve çalışma za
 
 Tempo şu anda Microsoft Edge Add-ons mağazasında yayınlanmamaktadır. Yerel olarak yükleyebilirsiniz:
 
-1. [Kaynak kod ZIP'ini indirin](https://github.com/halilozel1903/tempo-video-speed-controller/archive/refs/heads/main.zip) veya repoyu klonlayın:
+1. [Son release'teki extension ZIP'ini indirin](https://github.com/halilozel1903/tempo-video-speed-controller/releases/latest) veya repoyu klonlayın:
 
    ```sh
    git clone https://github.com/halilozel1903/tempo-video-speed-controller.git
@@ -33,7 +35,7 @@ Tempo şu anda Microsoft Edge Add-ons mağazasında yayınlanmamaktadır. Yerel 
 2. ZIP indirdiyseniz kalıcı bir klasöre çıkarın.
 3. Edge'de `edge://extensions` sayfasını açın.
 4. **Geliştirici modu / Developer mode** seçeneğini etkinleştirin.
-5. **Paketlenmemiş öğe yükle / Load unpacked** ile `manifest.json` dosyasının bulunduğu repo klasörünü seçin.
+5. **Paketlenmemiş öğe yükle / Load unpacked** ile `manifest.json` dosyasının bulunduğu klasörü seçin. Release ZIP'i için çıkarılan `tempo` klasörünü, clone için repo klasörünü kullanın.
 6. Açık video sekmelerini yenileyin. Kolay erişim için Tempo'yu araç çubuğuna sabitleyin.
 
 Kullanım için Node.js veya build adımı gerekmez. Edge'in extension'ı yükleyebilmesi için seçtiğiniz klasörü taşımayın veya silmeyin.
@@ -94,11 +96,25 @@ npm test
 npm run package
 ```
 
-Test paketi **12 Edge integration test** ve **4 başlangıç regression test** içerir. Gerçek playback, tekrar play, hız sıfırlamaları, medya değişimi, yeni videolar, iframe, açık shadow DOM, ayarların geri yüklenmesi, kısayollar ve browser yeniden açıldığında kalıcılık doğrulanır.
+Test paketi **12 Edge integration test**, **4 başlangıç regression test** ve **1 dağıtım testi** içerir. Gerçek playback, tekrar play, hız sıfırlamaları, medya değişimi, yeni videolar, iframe, açık shadow DOM, ayarların geri yüklenmesi, kısayollar, browser yeniden açıldığında kalıcılık, paket içeriği ve tekrarlanabilir arşiv üretimi doğrulanır.
 
 Testler ayrı bir geçici Edge profili kullanır ve sonrasında siler; kişisel browser profilinize dokunmaz. Üretilmiş küçük WebM fixture repoya dahildir; test için FFmpeg gerekmez.
 
-Paketleme sonucunda `dist/tempo/` yüklenebilir klasörü ve `dist/tempo-edge-1.0.0.zip` paylaşılabilir paketi oluşur. İkonları yeniden üretmek için `python3 scripts/icons.py` çalıştırabilirsiniz.
+Paketleme sonucunda `dist/tempo/` yüklenebilir klasörü, `dist/tempo-edge-1.0.1.zip` paylaşılabilir paketi ve SHA-256 doğrulaması için `dist/tempo-edge-1.0.1.zip.sha256` dosyası oluşur. İkonları yeniden üretmek için `python3 scripts/icons.py` çalıştırabilirsiniz.
+
+### JitPack dağıtımı
+
+[Projenin JitPack sayfasını açın](https://jitpack.io/#halilozel1903/tempo-video-speed-controller).
+
+JitPack, `jitpack.yml` içindeki custom build ile extension'ı **ZIP artifact** olarak paketler. Bu isteğe bağlı bir indirme kanalıdır; extension yine Edge'de **Load unpacked** ile yüklenir. Build, Python ve Maven kullanır; Node.js veya browser test bağımlılıkları gerektirmez.
+
+Artifact koordinatları `com.github.halilozel1903:tempo-video-speed-controller:<tag>`, türü `zip` olur. Örneğin v1.0.1 için:
+
+```text
+https://jitpack.io/com/github/halilozel1903/tempo-video-speed-controller/v1.0.1/tempo-video-speed-controller-v1.0.1.zip
+```
+
+Durum rozeti JitPack build geçmişine yönlendirir. Build logları ve indirme erişimi JitPack tarafından yönetilir. [GitHub release](https://github.com/halilozel1903/tempo-video-speed-controller/releases/latest) ayrı bir indirme kanalı sunar.
 
 ## Katkı ve lisans
 

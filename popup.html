@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tempo — Video hızı</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="settings.js" defer></script>
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">»</span><span>tempo<span class="brand-dot">.</span></span></div>
+    <label class="switch" title="Hız kontrolünü aç veya kapat"><input id="enabled" type="checkbox" aria-label="Hız kontrolü" disabled><span></span></label>
+  </header>
+  <main>
+    <div class="eyebrow"><span id="status-dot"></span><span id="status">AYARLAR YÜKLENİYOR</span></div>
+    <section class="speed-panel" aria-label="Video hızı">
+      <div class="speed-line"><button id="decrease" class="step" aria-label="Hızı azalt" disabled>−</button><div class="speed-display"><output id="speed-value" for="speed">1.5</output><span>×</span></div><button id="increase" class="step" aria-label="Hızı artır" disabled>+</button></div>
+      <p class="speed-caption">Senin hızın. Her videoda.</p>
+      <input id="speed" type="range" min="0.25" max="4" step="0.05" value="1.5" aria-label="Oynatma hızı" disabled>
+      <div class="range-labels"><span>0.25×</span><span>4×</span></div>
+      <div class="presets" aria-label="Hazır hızlar">
+        <button data-speed="0.75" disabled>0.75×</button><button data-speed="1" disabled>1×</button><button data-speed="1.25" disabled>1.25×</button><button data-speed="1.5" disabled>1.5×</button><button data-speed="2" disabled>2×</button><button data-speed="3" disabled>3×</button>
+      </div>
+    </section>
+    <section class="options" aria-label="Tercihler">
+      <label class="option"><span><strong>Hızı koru</strong><small>Site sıfırlasa da seçtiğin hız devam etsin.</small></span><input id="lock-speed" type="checkbox" disabled></label>
+      <label class="option"><span><strong>Doğal ses</strong><small>Hız değişsin, sesin tonu değişmesin.</small></span><input id="preserve-pitch" type="checkbox" disabled></label>
+    </section>
+    <div class="remember"><span aria-hidden="true">↻</span><p>Her play'de otomatik uygulanır.<br><span>Tercihin tüm sekmeler için hatırlanır.</span></p></div>
+    <details><summary>Klavye kısayolları <span>⌨</span></summary><div class="shortcuts"><span>Hızı artır / azalt</span><kbd>Alt ⇧ ↑ / ↓</kbd><span>Normal hız</span><kbd>Alt ⇧ 0</kbd></div></details>
+    <p id="feedback" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span>VIDEO SPEED CONTROLLER</span><span>v1.0</span></footer>
+</body>
+</html>

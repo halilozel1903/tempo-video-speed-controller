@@ -1,0 +1,27 @@
+{
+  "name": "tempo-video-speed-controller",
+  "version": "1.0.0",
+  "description": "A lightweight Microsoft Edge extension that remembers and reapplies your preferred video playback speed.",
+  "license": "MIT",
+  "author": "Halil Özel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halilozel1903/tempo-video-speed-controller.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halilozel1903/tempo-video-speed-controller/issues"
+  },
+  "homepage": "https://github.com/halilozel1903/tempo-video-speed-controller#readme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "package": "python3 scripts/package.py"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1"
+  }
+}

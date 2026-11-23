@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Tempo — Video Speed Controller",
+  "version": "1.0.0",
+  "description": "Seçtiğiniz video hızını hatırlar; her oynatmada ve yeni videoda otomatik uygular.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Tempo — Video hızı",
+    "default_popup": "popup.html",
+    "default_icon": {"16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png"}
+  },
+  "icons": {"16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png"},
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*", "file:///*"],
+    "js": ["settings.js", "content.js"],
+    "run_at": "document_start",
+    "all_frames": true,
+    "match_about_blank": true,
+    "match_origin_as_fallback": true
+  }]
+}
